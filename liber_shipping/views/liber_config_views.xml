@@ -1,21 +1,26 @@
 <odoo>
-  <menuitem id="menu_liber_root" name="Liber Shipping" sequence="10"/>
-  <menuitem id="menu_liber_ops" name="Operaciones" parent="menu_liber_root" sequence="10"/>
-  <menuitem id="menu_liber_conf" name="Configuración" parent="menu_liber_root" sequence="90"/>
-
-  <record id="action_liber_quote" model="ir.actions.act_window">
-    <field name="name">Cotizaciones</field>
-    <field name="res_model">liber.quote</field>
-    <field name="view_mode">tree,form</field>
+  <record id="res_config_settings_view_form_liber" model="ir.ui.view">
+    <field name="name">res.config.settings.liber.form</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base.view_res_config_settings"/>
+    <field name="arch" type="xml">
+      <xpath expr="//div[@id='settings']" position="inside">
+        <div class="app_settings_block" data-string="Liber Shipping" string="Liber Shipping">
+          <h2>API Liber</h2>
+          <div class="row mt16 o_settings_container">
+            <div class="col-12 col-lg-6">
+              <field name="liber_api_base"/>
+              <field name="liber_api_key_rates" password="True"/>
+              <field name="liber_api_key_t1" password="True"/>
+              <field name="liber_api_key_t2" password="True"/>
+              <field name="liber_api_key_liber" password="True"/>
+            </div>
+          </div>
+        </div>
+      </xpath>
+    </field>
   </record>
-  <menuitem id="menu_liber_quote" name="Cotizaciones" parent="menu_liber_ops" action="action_liber_quote"/>
-
-  <record id="action_liber_guide" model="ir.actions.act_window">
-    <field name="name">Guías</field>
-    <field name="res_model">liber.guide</field>
-    <field name="view_mode">tree,form</field>
-  </record>
-  <menuitem id="menu_liber_guide" name="Guías" parent="menu_liber_ops" action="action_liber_guide"/>
 </odoo>
+
 
 
