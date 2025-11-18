@@ -1,2 +1,3 @@
-# Inicialización del módulo liber_shipping
+from . import models
+
 
