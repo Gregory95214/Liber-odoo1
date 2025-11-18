@@ -2,11 +2,11 @@
   <record id="res_config_settings_view_form_liber" model="ir.ui.view">
     <field name="name">res.config.settings.liber.form</field>
     <field name="model">res.config.settings</field>
-    <!-- Odoo 17: usar este inherit_id -->
+    <!-- Odoo 17: vista base correcta -->
     <field name="inherit_id" ref="base.res_config_settings_view_form"/>
     <field name="arch" type="xml">
-      <!-- Insertamos nuestro bloque dentro del contenedor de settings -->
-      <xpath expr="//div[@id='settings']" position="inside">
+      <!-- Insertamos nuestro bloque dentro del <sheet> del formulario -->
+      <xpath expr="//sheet" position="inside">
         <div class="app_settings_block" string="Liber Shipping">
           <h2>Liber Shipping</h2>
           <div class="row mt16 o_settings_container">
@@ -33,7 +33,3 @@
     </field>
   </record>
 </odoo>
-
-
-
-
