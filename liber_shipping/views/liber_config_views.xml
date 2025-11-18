@@ -1,39 +1,21 @@
 <odoo>
-    <!-- Vista formulario de configuración -->
-    <record id="liber_config_form" model="ir.ui.view">
-        <field name="name">liber.config.form</field>
-        <field name="model">liber.config</field>
-        <field name="arch" type="xml">
-            <form string="Configuración Liber Shipping">
-                <sheet>
-                    <group string="Credenciales de API">
-                        <field name="api_url"/>
-                        <field name="api_key" password="True"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
+  <menuitem id="menu_liber_root" name="Liber Shipping" sequence="10"/>
+  <menuitem id="menu_liber_ops" name="Operaciones" parent="menu_liber_root" sequence="10"/>
+  <menuitem id="menu_liber_conf" name="Configuración" parent="menu_liber_root" sequence="90"/>
 
-    <!-- Acción para abrir la configuración -->
-    <record id="liber_config_action" model="ir.actions.act_window">
-        <field name="name">Liber Shipping</field>
-        <field name="res_model">liber.config</field>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="liber_config_form"/>
-        <field name="target">current</field>
-    </record>
+  <record id="action_liber_quote" model="ir.actions.act_window">
+    <field name="name">Cotizaciones</field>
+    <field name="res_model">liber.quote</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <menuitem id="menu_liber_quote" name="Cotizaciones" parent="menu_liber_ops" action="action_liber_quote"/>
 
-    <!-- Menú principal Liber Shipping -->
-    <menuitem id="liber_shipping_menu"
-              name="Liber Shipping"
-              sequence="10"/>
-
-    <!-- Menú Configuración dentro de Liber Shipping -->
-    <menuitem id="liber_shipping_config_menu"
-              name="Configuración"
-              parent="liber_shipping_menu"
-              action="liber_config_action"
-              sequence="10"/>
+  <record id="action_liber_guide" model="ir.actions.act_window">
+    <field name="name">Guías</field>
+    <field name="res_model">liber.guide</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <menuitem id="menu_liber_guide" name="Guías" parent="menu_liber_ops" action="action_liber_guide"/>
 </odoo>
+
 
