@@ -1,0 +1,9 @@
+liber_shipping/__manifest__.py
+liber_shipping/__init__.py
+liber_shipping/models/__init__.py
+liber_shipping/models/liber_config.py
+liber_shipping/models/liber_quote.py
+liber_shipping/views/liber_menus.xml
+liber_shipping/views/liber_config_views.xml
+liber_shipping/views/liber_quote_views.xml
+liber_shipping/security/ir.model.access.csv
