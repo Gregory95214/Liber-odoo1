@@ -20,12 +20,18 @@
     <field name="arch" type="xml">
       <form string="Cotización Liber">
         <header>
+          <!-- Visible sólo en draft o rated -->
           <button name="action_get_rates" type="object" string="Obtener cotizaciones"
-                  class="btn-primary" states="draft,rated"/>
+                  class="btn-primary"
+                  invisible="not (state in ('draft','rated'))"/>
+
+          <!-- Visible sólo si hay tarifa seleccionada y el estado es rated -->
           <button name="action_create_guide" type="object" string="Crear guía"
-                  attrs="{'invisible': [('selected_rate_id','=',False)]}" states="rated"/>
+                  invisible="(not selected_rate_id) or (state != 'rated')"/>
+
           <field name="state" widget="statusbar"/>
         </header>
+
         <sheet>
           <group>
             <group string="Paquete">
@@ -65,7 +71,7 @@
             </page>
             <page string="Cotizaciones">
               <field name="selected_rate_id" readonly="1"/>
-              <field name="rate_ids" context="{'default_quote_id': active_id}">
+              <field name="rate_ids">
                 <tree editable="bottom">
                   <field name="provider"/>
                   <field name="service_name"/>
@@ -83,3 +89,4 @@
     </field>
   </record>
 </odoo>
+
