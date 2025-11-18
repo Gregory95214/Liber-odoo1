@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem id="menu_liber_root" name="Liber Shipping"/>
+  <menuitem id="menu_liber_root" name="Liber Shipping" sequence="10"/>
+  <menuitem id="menu_liber_ops" name="Operaciones" parent="menu_liber_root" sequence="10"/>
+  <menuitem id="menu_liber_conf" name="Configuración" parent="menu_liber_root" sequence="90"/>
+
+  <record id="action_liber_quote" model="ir.actions.act_window">
+    <field name="name">Cotizaciones</field>
+    <field name="res_model">liber.quote</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <menuitem id="menu_liber_quote" name="Cotizaciones" parent="menu_liber_ops" action="action_liber_quote"/>
+
+  <record id="action_liber_guide" model="ir.actions.act_window">
+    <field name="name">Guías</field>
+    <field name="res_model">liber.guide</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <menuitem id="menu_liber_guide" name="Guías" parent="menu_liber_ops" action="action_liber_guide"/>
 </odoo>
