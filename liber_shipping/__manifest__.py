@@ -1,6 +1,6 @@
 {
     'name': 'Liber Shipping',
-    'version': '1.0',
+    'version': '1.0.0',
     'summary': 'Integración de Liber Paquetería con Odoo',
     'description': """
 Módulo para cotizar y generar guías de Liber Paquetería desde Odoo.
@@ -18,5 +18,6 @@ Módulo para cotizar y generar guías de Liber Paquetería desde Odoo.
     'application': True,
     'license': 'LGPL-3',
 }
+
 
 
