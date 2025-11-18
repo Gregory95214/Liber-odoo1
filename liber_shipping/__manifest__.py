@@ -1,11 +1,17 @@
 {
     'name': 'Liber Shipping',
-    'version': '1.0',
+    'version': '16.0.1.0.0',
     'summary': 'Integración de Liber Paquetería con Odoo',
-    'author': 'Gregory Rodriguez',
+    'description': """
+Módulo para cotizar y generar guías de Liber Paquetería desde Odoo.
+""",
+    'author': 'Gregory Rodríguez',
     'category': 'Tools',
     'depends': ['base'],
-    'data': [],
+    'data': [
+        # aquí luego agregaremos las vistas y reglas de seguridad
+    ],
     'installable': True,
     'application': True,
 }
+
