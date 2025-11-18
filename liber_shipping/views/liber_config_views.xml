@@ -4,8 +4,9 @@
     <field name="model">res.config.settings</field>
     <field name="inherit_id" ref="base.view_res_config_settings"/>
     <field name="arch" type="xml">
-      <xpath expr="//div[@id='settings']" position="inside">
-        <div class="app_settings_block" data-string="Liber Shipping" string="Liber Shipping">
+      <!-- Inserta nuestro bloque dentro del contenedor de settings -->
+      <xpath expr="//div[hasclass('o_settings_container')]" position="inside">
+        <div class="app_settings_block" string="Liber Shipping" data-string="Liber Shipping">
           <h2>API Liber</h2>
           <div class="row mt16 o_settings_container">
             <div class="col-12 col-lg-6">
