@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
-from . import liber_config
-from . import liber_quote
+from . import liber_config       # Ajustes (res.config.settings)
+from . import liber_quote        # Cotización, líneas de tarifa y guía
+
 
