@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_liber_config_user,access_liber_config_user,model_liber_config,base.group_user,1,1,1,1
 access_liber_quote_user,access_liber_quote_user,model_liber_quote,base.group_user,1,1,1,1
+access_liber_quote_rate_user,access_liber_quote_rate_user,model_liber_quote_rate,base.group_user,1,1,1,1
+access_liber_guide_user,access_liber_guide_user,model_liber_guide,base.group_user,1,1,1,1
+
