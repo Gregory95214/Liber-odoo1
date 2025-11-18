@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_liber_config_form" model="ir.ui.view">
+        <field name="name">liber.config.form</field>
+        <field name="model">liber.config</field>
+        <field name="arch" type="xml">
+            <form string="Configuración Liber">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
