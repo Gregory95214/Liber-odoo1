@@ -1,35 +1,87 @@
 <odoo>
-  <record id="res_config_settings_view_form_liber" model="ir.ui.view">
-    <field name="name">res.config.settings.liber.form</field>
-    <field name="model">res.config.settings</field>
-    <!-- Odoo 17: vista base correcta -->
-    <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+  <record id="view_liber_quote_tree" model="ir.ui.view">
+    <field name="name">liber.quote.tree</field>
+    <field name="model">liber.quote</field>
     <field name="arch" type="xml">
-      <!-- Insertamos nuestro bloque dentro del <sheet> del formulario -->
-      <xpath expr="//sheet" position="inside">
-        <div class="app_settings_block" string="Liber Shipping">
-          <h2>Liber Shipping</h2>
-          <div class="row mt16 o_settings_container">
-            <div class="col-12 col-lg-6">
-              <div class="o_setting_box">
-                <div class="o_setting_left_pane">
-                  <field name="liber_api_base"/>
-                  <field name="liber_api_key_rates" password="True"/>
-                  <field name="liber_api_key_t1"    password="True"/>
-                  <field name="liber_api_key_t2"    password="True"/>
-                  <field name="liber_api_key_liber" password="True"/>
-                </div>
-                <div class="o_setting_right_pane">
-                  <label for="liber_api_base"/>
-                  <div class="text-muted">
-                    URL base y claves API de Liber para cotizar y crear guías (por proveedor).
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </xpath>
+      <tree>
+        <field name="name"/>
+        <field name="origin_postal_code"/>
+        <field name="destiny_postal_code"/>
+        <field name="package_weight"/>
+        <field name="state"/>
+        <field name="selected_rate_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_liber_quote_form" model="ir.ui.view">
+    <field name="name">liber.quote.form</field>
+    <field name="model">liber.quote</field>
+    <field name="arch" type="xml">
+      <form string="Cotización Liber">
+        <header>
+          <button name="action_get_rates" type="object" string="Obtener cotizaciones"
+                  class="btn-primary"
+                  invisible="[('state','=','done')]"/>
+          <button name="action_create_guide" type="object" string="Crear guía"
+                  invisible="['|', ('selected_rate_id','=', False), ('state','!=','rated')]"/>
+          <field name="state" widget="statusbar"/>
+        </header>
+        <sheet>
+          <group>
+            <group string="Paquete">
+              <field name="package_content"/>
+              <field name="package_content_price"/>
+              <field name="package_height"/>
+              <field name="package_width"/>
+              <field name="package_depth"/>
+              <field name="package_weight"/>
+            </group>
+            <group string="Origen/Destino">
+              <field name="origin_postal_code"/>
+              <field name="origin_city_name"/>
+              <field name="destiny_postal_code"/>
+              <field name="destiny_city_name"/>
+            </group>
+          </group>
+
+          <notebook>
+            <page string="Remitente">
+              <group>
+                <field name="sender_full_name"/><field name="sender_phone"/>
+                <field name="sender_state"/><field name="sender_city"/>
+                <field name="sender_colony"/><field name="sender_street"/>
+                <field name="sender_ext_number"/><field name="sender_int_number"/>
+                <field name="sender_refs"/>
+              </group>
+            </page>
+            <page string="Destinatario">
+              <group>
+                <field name="recipient_full_name"/><field name="recipient_phone"/>
+                <field name="recipient_state"/><field name="recipient_city"/>
+                <field name="recipient_colony"/><field name="recipient_street"/>
+                <field name="recipient_ext_number"/><field name="recipient_int_number"/>
+                <field name="recipient_refs"/>
+              </group>
+            </page>
+            <page string="Cotizaciones">
+              <field name="selected_rate_id" readonly="1"/>
+              <field name="rate_ids">
+                <tree editable="bottom">
+                  <field name="provider"/>
+                  <field name="service_name"/>
+                  <field name="shipping_code"/>
+                  <field name="product_code"/>
+                  <field name="local_product_code"/>
+                  <field name="price"/>
+                  <button name="action_select" type="object" string="Elegir" class="btn-primary"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
     </field>
   </record>
 </odoo>
+
