@@ -1,0 +1,35 @@
+<odoo>
+  <record id="view_liber_guide_tree" model="ir.ui.view">
+    <field name="name">liber.guide.tree</field>
+    <field name="model">liber.guide</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="provider"/>
+        <field name="shipping_code"/>
+        <field name="price"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_liber_guide_form" model="ir.ui.view">
+    <field name="name">liber.guide.form</field>
+    <field name="model">liber.guide</field>
+    <field name="arch" type="xml">
+      <form string="Guía Liber">
+        <sheet>
+          <group>
+            <field name="name" readonly="1"/>
+            <field name="quote_id" readonly="1"/>
+            <field name="provider"/>
+            <field name="shipping_code"/>
+            <field name="product_code"/>
+            <field name="local_product_code"/>
+            <field name="price"/>
+            <field name="response_json" widget="json"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>
