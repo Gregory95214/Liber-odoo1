@@ -2,19 +2,30 @@
   <record id="res_config_settings_view_form_liber" model="ir.ui.view">
     <field name="name">res.config.settings.liber.form</field>
     <field name="model">res.config.settings</field>
+    <!-- Odoo 17: usar este inherit_id -->
     <field name="inherit_id" ref="base.res_config_settings_view_form"/>
     <field name="arch" type="xml">
-      <!-- Inserta nuestro bloque dentro del contenedor principal -->
-      <xpath expr="//div[hasclass('o_settings_container')]" position="inside">
-        <div class="app_settings_block" string="Liber Shipping" data-string="Liber Shipping">
-          <h2>API Liber</h2>
+      <!-- Insertamos nuestro bloque dentro del contenedor de settings -->
+      <xpath expr="//div[@id='settings']" position="inside">
+        <div class="app_settings_block" string="Liber Shipping">
+          <h2>Liber Shipping</h2>
           <div class="row mt16 o_settings_container">
             <div class="col-12 col-lg-6">
-              <field name="liber_api_base"/>
-              <field name="liber_api_key_rates" password="True"/>
-              <field name="liber_api_key_t1" password="True"/>
-              <field name="liber_api_key_t2" password="True"/>
-              <field name="liber_api_key_liber" password="True"/>
+              <div class="o_setting_box">
+                <div class="o_setting_left_pane">
+                  <field name="liber_api_base"/>
+                  <field name="liber_api_key_rates" password="True"/>
+                  <field name="liber_api_key_t1"    password="True"/>
+                  <field name="liber_api_key_t2"    password="True"/>
+                  <field name="liber_api_key_liber" password="True"/>
+                </div>
+                <div class="o_setting_right_pane">
+                  <label for="liber_api_base"/>
+                  <div class="text-muted">
+                    URL base y claves API de Liber para cotizar y crear guías (por proveedor).
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -22,6 +33,7 @@
     </field>
   </record>
 </odoo>
+
 
 
 
