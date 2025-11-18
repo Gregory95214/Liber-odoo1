@@ -1,16 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_liber_config_form" model="ir.ui.view">
+    <!-- Vista formulario de configuración -->
+    <record id="liber_config_form" model="ir.ui.view">
         <field name="name">liber.config.form</field>
         <field name="model">liber.config</field>
         <field name="arch" type="xml">
-            <form string="Configuración Liber">
+            <form string="Configuración Liber Shipping">
                 <sheet>
-                    <group>
-                        <field name="name"/>
+                    <group string="Credenciales de API">
+                        <field name="api_url"/>
+                        <field name="api_key" password="True"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
+
+    <!-- Acción para abrir la configuración -->
+    <record id="liber_config_action" model="ir.actions.act_window">
+        <field name="name">Liber Shipping</field>
+        <field name="res_model">liber.config</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="liber_config_form"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Menú principal Liber Shipping -->
+    <menuitem id="liber_shipping_menu"
+              name="Liber Shipping"
+              sequence="10"/>
+
+    <!-- Menú Configuración dentro de Liber Shipping -->
+    <menuitem id="liber_shipping_config_menu"
+              name="Configuración"
+              parent="liber_shipping_menu"
+              action="liber_config_action"
+              sequence="10"/>
 </odoo>
+
