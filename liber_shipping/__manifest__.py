@@ -1,23 +1,27 @@
 {
     'name': 'Liber Shipping',
     'version': '1.0.0',
-    'summary': 'Integración de Liber Paquetería con Odoo',
+    'summary': 'Cotiza y genera guías con la API de Liber',
     'description': """
-Módulo para cotizar y generar guías de Liber Paquetería desde Odoo.
+Módulo para cotizar y generar guías desde Odoo usando la API de Liber.
 """,
     'author': 'Gregory Rodríguez',
-    'category': 'Tools',
-    'depends': ['base'],
+    'license': 'LGPL-3',
+    'category': 'Inventory/Delivery',
+    'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',
+        'data/ir_sequence_data.xml',
         'views/liber_menus.xml',
         'views/liber_config_views.xml',
         'views/liber_quote_views.xml',
+        'views/liber_guide_views.xml',
     ],
+    'external_dependencies': {'python': ['requests']},
     'installable': True,
     'application': True,
-    'license': 'LGPL-3',
 }
+
 
 
 
